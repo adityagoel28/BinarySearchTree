@@ -27,5 +27,10 @@ public class Main {
         bst.postorder();
 
         System.out.println("\nSize of the BST: " + bst.getSize());
+
+        // UC 3: Search for a specific number in the BST
+        int numberToSearch = 63;
+        boolean isFound = bst.search(numberToSearch);
+        System.out.println("Is " + numberToSearch + " present in the BST: " + isFound);
     }
 }
