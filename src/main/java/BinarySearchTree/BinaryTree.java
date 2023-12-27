@@ -74,4 +74,22 @@ public class BinaryTree<T extends Comparable<T>> {
         }
         return 1 + this.getSizeRec(root.left) + this.getSizeRec(root.right);
     }
+
+    // search for a node
+    public boolean search(T key) {
+        return this.searchRec(root, key);
+    }
+
+    public boolean searchRec(INode<T> root, T key) {
+        if (root == null) {
+            return false;
+        }
+        if (root.key == key) {
+            return true;
+        }
+        if (key.compareTo(root.key) < 0) {
+            return this.searchRec(root.left, key);
+        }
+        return this.searchRec(root.right, key);
+    }
 }
