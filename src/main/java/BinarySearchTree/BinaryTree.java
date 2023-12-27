@@ -3,15 +3,15 @@ package BinarySearchTree;
 public class BinaryTree<T extends Comparable<T>> {
     INode<T> root;
 
-    BinaryTree() {
+    public BinaryTree() {
         this.root = null;
     }
 
-    void insert(T key) {
+    public void insert(T key) {
         this.root = insertRec(root, key);
     }
 
-    INode<T> insertRec(INode<T> root, T key) {
+    public INode<T> insertRec(INode<T> root, T key) {
         if (root == null) {
             root = new INode<>(key);
             return root;
@@ -25,11 +25,11 @@ public class BinaryTree<T extends Comparable<T>> {
         return root;
     }
 
-    void inorder() {
+    public void inorder() {
         inorderRec(root);
     }
 
-    void inorderRec(INode<T> root) {
+    public void inorderRec(INode<T> root) {
         if (root != null) {
             inorderRec(root.left);
             System.out.print(root.key + " ");
@@ -38,11 +38,11 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     //pre order traversal
-    void preorder() {
+    public void preorder() {
         preorderRec(root);
     }
 
-    void preorderRec(INode<T> root) {
+    public void preorderRec(INode<T> root) {
         if (root != null) {
             System.out.print(root.key + " ");
             preorderRec(root.left);
@@ -51,15 +51,27 @@ public class BinaryTree<T extends Comparable<T>> {
     }
 
     //post order traversal
-    void postorder() {
+    public void postorder() {
         postorderRec(root);
     }
 
-    void postorderRec(INode<T> root) {
+    public void postorderRec(INode<T> root) {
         if (root != null) {
             postorderRec(root.left);
             postorderRec(root.right);
             System.out.print(root.key + " ");
         }
+    }
+
+    // get size
+    public int getSize() {
+        return this.getSizeRec(root);
+    }
+
+    public int getSizeRec(INode<T> root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + this.getSizeRec(root.left) + this.getSizeRec(root.right);
     }
 }
